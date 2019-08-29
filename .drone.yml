@@ -110,7 +110,7 @@ steps:
   - outofdate
   - duniverse
   - opam
-=======
+  commands:
   - opam repo add mirage-dev .
   - opam update -u
   - opam exec -- ocaml -version
