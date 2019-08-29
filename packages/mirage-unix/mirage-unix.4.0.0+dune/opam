@@ -15,10 +15,9 @@ build: [
 
 depends: [
   "ocaml" {>= "4.04.2"}
-  "dune" {build}
+  "dune"
   "lwt" {>= "2.4.3"}
   "logs"
-  "io-page-unix" {>= "2.0.0"}
   "mirage-os-shim" {>= "4.0.0"}
 ]
 tags: "org:mirage"
