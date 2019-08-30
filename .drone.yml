@@ -91,7 +91,7 @@ steps:
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - rm -f duniverse/dune
-  - opam depext -y $PKGS
+  - opam depext -y $PKGS ctypes-foreign
   - opam install -y dune
   - opam exec -- dune upgrade
   - duniverse opam-install
@@ -109,9 +109,6 @@ steps:
   depends_on:
   - opam
   commands:
-  - opam repo add mirage-dev .
-  - opam update -u
-  - opam exec -- ocaml -version
   - opam depext -uiy mirage duniverse conf-pkg-config
   - git clone -b dune-fix git://github.com/TheLortex/mirage-skeleton
   - mv /home/opam/.opam .opam
