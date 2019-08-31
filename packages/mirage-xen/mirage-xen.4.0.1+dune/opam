@@ -3,7 +3,7 @@ maintainer:   "anil@recoil.org"
 authors:      "The MirageOS team"
 homepage:     "https://github.com/mirage/mirage-xen"
 bug-reports:  "https://github.com/mirage/mirage-xen/issues/"
-dev-repo:     "git+https://github.com/TheLortex/mirage-xen.git"
+dev-repo:     "git+https://github.com/dune-universe/mirage-xen.git"
 doc:          "https://mirage.github.io/mirage-xen/"
 license:      "ISC"
 tags:         ["org:mirage"]
@@ -14,7 +14,7 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.04.2"}
-  "dune" {build}
+  "dune" {>="1.7"}
   "cstruct" {>= "1.0.1"}
   "lwt" {>= "2.4.3"}
   "shared-memory-ring-lwt"
@@ -25,6 +25,7 @@ depends: [
   "mirage-profile" {>= "0.3"}
   "mirage-xen-ocaml" {>= "2.6.0"}
   "mirage-xen-minios" {>= "0.7.0"}
+  "io-page"
   "logs"
   "fmt"
   "mirage-os-shim" {>= "2.0.0"}
@@ -41,5 +42,5 @@ the low level C startup code and C stubs required by the OCaml code.
 """
 url {
   src:
-    "git+https://github.com/TheLortex/mirage-xen.git#impl-mirage-os-shim"
+    "git+https://github.com/dune-universe/mirage-xen.git#duniverse-master"
 }
