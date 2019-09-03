@@ -87,7 +87,7 @@ steps:
   - opam remove -ay
   - PKGS=`./list-overrides.sh`
   - mkdir /tmp/duniverse-build
-  - duniverse init --overlay-remote . --repo /tmp/duniverse-build $PKGS 
+  - duniverse init --overlay-remote . --repo /tmp/duniverse-build $PKGS --pin bisect_ppx,https://github.com/aantron/bisect_ppx.git,master
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - rm -f duniverse/dune
@@ -109,7 +109,7 @@ steps:
   depends_on:
   - opam
   commands:
-  - opam depext -uiy mirage duniverse conf-pkg-config
+  - opam depext -uiy mirage conf-pkg-config
   - git clone -b dune-fix git://github.com/TheLortex/mirage-skeleton
   - mv /home/opam/.opam .opam
 
