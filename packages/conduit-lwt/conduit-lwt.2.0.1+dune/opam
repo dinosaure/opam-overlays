@@ -23,5 +23,5 @@ build: [
 synopsis: "A portable network connection establishment library using Lwt"
 dev-repo: "git+https://github.com/dune-universe/ocaml-conduit.git"
 url {
-  src: "git+https://github.com/dune-universe/ocaml-conduit.git#duniverse-v2.0.1"
+  src: "git+https://github.com/dune-universe/ocaml-conduit.git#duniverse-master"
 }
