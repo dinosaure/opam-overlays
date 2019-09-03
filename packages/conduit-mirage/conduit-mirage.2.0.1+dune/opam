@@ -24,6 +24,7 @@ depends: [
   "ipaddr-sexp"
 
   #these are required for tls.mirage, which conduit-mirage depends on
+  "tls-mirage"
   "mirage-kv-lwt" {>= "2.0.0"}
   "mirage-clock" {>= "2.0.0"}
   "ptime"
