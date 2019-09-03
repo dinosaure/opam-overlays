@@ -86,8 +86,9 @@ steps:
   - opam pin remove -y duniverse
   - opam remove -ay
   - PKGS=`./list-overrides.sh`
+  - EXTRA_PKGS="lru mtime xen-gnt-unix io-page"
   - mkdir /tmp/duniverse-build
-  - duniverse init --overlay-remote . --repo /tmp/duniverse-build $PKGS --pin bisect_ppx,https://github.com/aantron/bisect_ppx.git,master
+  - duniverse init --overlay-remote . --repo /tmp/duniverse-build $PKGS $EXTRA_PKGS --pin bisect_ppx,https://github.com/aantron/bisect_ppx.git,master
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - rm -f duniverse/dune
@@ -109,7 +110,10 @@ steps:
   depends_on:
   - opam
   commands:
-  - opam depext -uiy mirage conf-pkg-config
+  - sudo chown -R opam .
+  - git -C /home/opam/opam-repository pull origin
+  - opam repo add overlays .
+  - opam depext -uiy mirage conf-pkg-config duniverse
   - git clone -b dune-fix git://github.com/TheLortex/mirage-skeleton
   - mv /home/opam/.opam .opam
 
