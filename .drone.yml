@@ -44,6 +44,36 @@ steps:
   - ldd _build/default/duniverse/duniverse/bin/duniverse.exe
   - ldd _build/default/duniverse/ocamlformat/src/ocamlformat.exe
   - ldd _build/default/duniverse/dune-release/bin/main.exe
+- name: platform-dune-latest
+  image: ocaml/opam2:alpine
+  commands:
+  - sudo chown -R opam .
+  - opam switch 4.07
+  - git -C /home/opam/opam-repository pull origin
+  - opam repo add overlays .
+  - opam pin add -n duniverse https://github.com/avsm/duniverse.git
+  - opam update -uy
+  - env OPAMDOWNLOADJOBS=10 opam depext -iy duniverse
+  - sudo cp `opam config var bin`/duniverse /usr/bin/duniverse
+  - opam remove -ay
+  - PKGS=`./list-platform-binaries.sh -packages`
+  - TARGETS=`./list-platform-binaries.sh -targets`
+  - mkdir /tmp/duniverse-build
+  - duniverse init --overlay-remote . --pin duniverse,https://github.com/avsm/duniverse.git --repo /tmp/duniverse-build $PKGS
+  - cd /tmp/duniverse-build
+  - duniverse pull --yes
+  - opam depext -y $PKGS
+  - opam pin add dune --dev -n
+  - opam install -y dune
+  - opam exec -- dune upgrade
+  - echo "(lang dune 1.11)" > dune-project
+  - echo "(name ocaml-platform)" >> dune-project
+  - echo "(lang dune 1.11)" > dune-workspace
+  - echo "(env (_ (flags -cclib -static)))" >> dune-workspace
+  - opam exec -- dune build --profile=release $TARGETS
+  - ldd _build/default/duniverse/duniverse/bin/duniverse.exe
+  - ldd _build/default/duniverse/ocamlformat/src/ocamlformat.exe
+  - ldd _build/default/duniverse/dune-release/bin/main.exe
 - name: duniverse-vendored
   image: ocaml/opam2:alpine
   commands:
