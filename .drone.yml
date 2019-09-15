@@ -97,7 +97,6 @@ steps:
   - echo "(lang dune 1.11)" > dune-workspace
   - echo "(env (_ (flags -cclib -static)))" >> dune-workspace
   - opam exec -- dune build @install
-  - ls -la
   - cat duniverse.install || true
   - cp _build/install/default/bin/duniverse duniverse.exe
   - ldd duniverse.exe
