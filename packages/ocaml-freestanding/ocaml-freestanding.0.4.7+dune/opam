@@ -5,7 +5,7 @@ homepage: "https://github.com/mirage/ocaml-freestanding"
 bug-reports: "https://github.com/mirage/ocaml-freestanding/issues/"
 license: "MIT"
 tags: "org:mirage"
-dev-repo: "git+https://github.com/TheLortex/ocaml-freestanding.git"
+dev-repo: "git+https://github.com/dune-universe/ocaml-freestanding.git"
 build: [make]
 install: [make "install" "PREFIX=%{prefix}%"]
 remove: [make "uninstall" "PREFIX=%{prefix}%"]
