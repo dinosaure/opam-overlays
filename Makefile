@@ -7,7 +7,9 @@ init:
 	cp -r .opam /home/opam/.opam
 	echo `opam config env`
 	sudo apt-get install -qq -yy m4 pkg-config binutils
-	opam config exec $(MAKE) build
+	opam exec $(MAKE) build
+	opam list
+	opam show mirage --raw
 
 build:
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=unix
