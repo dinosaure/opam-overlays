@@ -27,7 +27,7 @@ conflicts: [
   "solo5-kernel-muen"
   "solo5-bindings-hvt" {>="0.6.0"}
   "solo5-bindings-virtio" {>="0.6.0"}
-  "solo5-bindings-meun" {>="0.6.0"}
+  "solo5-bindings-muen" {>="0.6.0"}
   "solo5-bindings-genode" {>="0.6.0"}
 ]
 available: [
