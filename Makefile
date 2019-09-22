@@ -7,12 +7,13 @@ init:
 	cp -r .opam /home/opam/.opam
 	echo `opam config env`
 	sudo apt-get install -qq -yy m4 pkg-config binutils
-	opam list
 	opam show mirage --raw
+	mirage --version
+	opam update -uy
 	opam exec $(MAKE) build
 
 build:
-	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=unix MIRAGE_FLAGS=-vv
+	opam exec -- $(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=unix MIRAGE_FLAGS=-vv
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-clean
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=xen
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-clean
