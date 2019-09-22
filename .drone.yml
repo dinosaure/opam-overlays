@@ -143,17 +143,6 @@ steps:
   - opam depext -uiy mirage conf-pkg-config duniverse
   - git clone -b duniverse-master git://github.com/dune-universe/mirage-skeleton
   - mv /home/opam/.opam .opam
-- name: common2
-  image: ocaml/opam2:4.07
-  commands:
-  - sudo apt-get install -qq -yy m4 pkg-config binutils
-  - sudo chown -R opam .
-  - git -C /home/opam/opam-repository pull origin
-  - opam repo add overlays .
-  - opam depext -uiy mirage conf-pkg-config duniverse
-  - git clone -b duniverse-master git://github.com/dune-universe/mirage-skeleton mirage-skeleton2
-  - cd mirage-skeleton2/tutorial/noop
-  - opam exec -- mirage configure -t unix
 - name: tutorial/noop
   image: ocaml/opam2:4.07
   depends_on:
