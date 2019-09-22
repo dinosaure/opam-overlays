@@ -148,7 +148,7 @@ steps:
   depends_on:
   - common
   commands:
-  - make OPAM_REMOTE=. EXAMPLE=tutorial/noop
+  - make OVERLAY_REMOTE=. EXAMPLE=tutorial/noop
 
 - name: stage1-noop
   image: ocaml/opam2:4.07
@@ -160,14 +160,14 @@ steps:
   depends_on:
   - stage1-noop
   commands:
-  - make OPAM_REMOTE=. EXAMPLE=tutorial/noop-functor
+  - make OVERLAY_REMOTE=. EXAMPLE=tutorial/noop-functor
 
 - name: tutorial/hello
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make OPAM_REMOTE=. EXAMPLE=tutorial/hello
+  - make OVERLAY_REMOTE=. EXAMPLE=tutorial/hello
 
 - name: tutorial/hello-key
   image: ocaml/opam2:4.07
