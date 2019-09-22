@@ -12,7 +12,7 @@ init:
 	opam exec $(MAKE) build
 
 build:
-	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=unix
+	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=unix MIRAGE_FLAGS=-vv
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-clean
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-build MODE=xen
 	$(MAKE) -C mirage-skeleton $(EXAMPLE)-clean
