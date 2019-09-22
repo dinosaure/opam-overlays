@@ -8,7 +8,7 @@ init:
 	echo `opam config env`
 	sudo apt-get install -qq -yy m4 pkg-config binutils
 	opam show mirage --raw
-	mirage --version
+	opam exec -- mirage --version
 	opam update -uy
 	opam exec $(MAKE) build
 
