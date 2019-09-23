@@ -174,42 +174,42 @@ steps:
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/hello-key
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/hello-key
 
 - name: tutorial/lwt/echo_server
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/lwt/echo_server
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/lwt/echo_server
 
 - name: tutorial/lwt/heads1
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/lwt/heads1
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/lwt/heads1
 
 - name: tutorial/lwt/heads2
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/lwt/heads2
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/lwt/heads2
 
 - name: tutorial/lwt/timeout1
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/lwt/timeout1
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/lwt/timeout1
 
 - name: tutorial/lwt/timeout2
   image: ocaml/opam2:4.07
   depends_on:
   - stage1-noop
   commands:
-  - make EXAMPLE=tutorial/lwt/timeout2
+  - make OVERLAY_REMOTE=`pwd` EXAMPLE=tutorial/lwt/timeout2
 
 
 - name: stage2-tutorial
