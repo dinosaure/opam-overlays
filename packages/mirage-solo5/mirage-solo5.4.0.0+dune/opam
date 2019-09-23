@@ -21,7 +21,7 @@ depends: [
   "ocaml" {>= "4.04.2"}
   "cstruct" {>= "1.0.1"}
   "lwt" {>= "2.4.3"}
-  "ocaml-freestanding" {>= "0.4.4"}
+  "ocaml-freestanding" {= "0.4.7+dune"}
   "mirage-os-shim"{>= "4.0.0"}
   "lwt-dllist"
   "metrics"
