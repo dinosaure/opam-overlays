@@ -63,7 +63,7 @@ steps:
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - opam depext -y $PKGS
-  - opam pin add dune https://github.com/rgrinberg/jbuilder.git#fix-requires-list -n
+  - opam pin add dune --dev -n
   - opam install -y dune
   - opam exec -- dune upgrade
   - echo "(lang dune 1.11)" > dune-project
