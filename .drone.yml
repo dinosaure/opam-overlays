@@ -22,11 +22,9 @@ steps:
   - opam switch 4.07
   - git -C /home/opam/opam-repository pull origin
   - opam repo add overlays .
-  - opam pin add -n duniverse https://github.com/avsm/duniverse.git
   - opam update -uy
-  - env OPAMDOWNLOADJOBS=10 opam depext -iy duniverse
-  - sudo cp `opam config var bin`/duniverse /usr/bin/duniverse
-  - opam remove -ay
+  - opam install -y dune
+  - git clone git://github.com/avsm/duniverse && cd duniverse && make && sudo make install PREFIX=/usr/bin && cd .. && rm -rf duniverse
   - PKGS=`./list-platform-binaries.sh -packages`
   - TARGETS=`./list-platform-binaries.sh -targets`
   - mkdir /tmp/duniverse-build
@@ -51,11 +49,9 @@ steps:
   - opam switch 4.07
   - git -C /home/opam/opam-repository pull origin
   - opam repo add overlays .
-  - opam pin add -n duniverse https://github.com/avsm/duniverse.git
-  - opam update -uy
-  - env OPAMDOWNLOADJOBS=10 opam depext -iy duniverse
-  - sudo cp `opam config var bin`/duniverse /usr/bin/duniverse
-  - opam remove -ay
+  - opam pin add dune --dev -n
+  - opam install -y dune
+  - git clone git://github.com/avsm/duniverse && cd duniverse && make && sudo make install PREFIX=/usr/bin && cd .. && rm -rf duniverse
   - PKGS=`./list-platform-binaries.sh -packages`
   - TARGETS=`./list-platform-binaries.sh -targets`
   - mkdir /tmp/duniverse-build
@@ -63,7 +59,6 @@ steps:
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - opam depext -y $PKGS
-  - opam pin add dune --dev -n
   - opam install -y dune
   - opam exec -- dune upgrade
   - echo "(lang dune 1.11)" > dune-project
@@ -81,13 +76,9 @@ steps:
   - opam switch 4.07
   - git -C /home/opam/opam-repository pull origin
   - opam repo add overlays .
-  - opam pin add -n duniverse https://github.com/avsm/duniverse.git
-  - opam update -uy
-  - env OPAMDOWNLOADJOBS=10 opam depext -iy duniverse
-  - sudo cp `opam config var bin`/duniverse /usr/bin/duniverse
-  - opam remove -ay
-  - git clone git://github.com/avsm/duniverse.git /tmp/duniverse-build
-  - duniverse init --overlay-remote . --pin duniverse,https://github.com/avsm/duniverse.git --repo /tmp/duniverse-build
+  - opam install -y dune
+  - git clone git://github.com/avsm/duniverse && cd duniverse && make && sudo make install PREFIX=/usr/bin && cd .. && rm -rf duniverse
+  - git clone git://github.com/avsm/duniverse /tmp/duniverse-build
   - cd /tmp/duniverse-build
   - duniverse pull --yes
   - opam install -y dune
@@ -101,31 +92,6 @@ steps:
   - cp _build/install/default/bin/duniverse duniverse.exe
   - ldd duniverse.exe
   - ./duniverse.exe --help
-- name: duniverse
-  image: ocaml/opam2:4.07
-  failure: ignore
-  commands:
-  - sudo chown -R opam .
-  - git -C /home/opam/opam-repository pull origin
-  - opam repo add overlays .
-  - opam pin add -n duniverse https://github.com/avsm/duniverse.git
-  - opam update -uy
-  - env OPAMDOWNLOADJOBS=10 opam depext -iy duniverse
-  - sudo cp `opam config var bin`/duniverse /usr/bin/duniverse
-  - opam pin remove -y duniverse
-  - opam remove -ay
-  - PKGS=`./list-overrides.sh`
-  - EXTRA_PKGS="lru mtime xen-gnt-unix io-page"
-  - mkdir /tmp/duniverse-build
-  - duniverse init --overlay-remote . --repo /tmp/duniverse-build $PKGS $EXTRA_PKGS --pin bisect_ppx,https://github.com/aantron/bisect_ppx.git,master
-  - cd /tmp/duniverse-build
-  - duniverse pull --yes
-  - rm -f duniverse/dune
-  - opam depext -y $PKGS ctypes-foreign
-  - opam install -y dune
-  - opam exec -- dune upgrade
-  - duniverse opam-install
-  - opam exec -- dune build --profile=release
 - name: outofdate
   image: ocaml/opam2:4.07
   commands:
@@ -140,9 +106,12 @@ steps:
   - sudo chown -R opam .
   - git -C /home/opam/opam-repository pull origin
   - opam repo add overlays .
-  - opam depext -uiy mirage conf-pkg-config duniverse
+  - opam install -y dune
+  - git clone git://github.com/avsm/duniverse && cd duniverse && make && sudo make install PREFIX=/usr/bin && cd .. && rm -rf duniverse
+  - opam depext -uiy mirage conf-pkg-config
   - git clone -b duniverse-master git://github.com/dune-universe/mirage-skeleton
   - mv /home/opam/.opam .opam
+  - echo done
 - name: tutorial/noop
   image: ocaml/opam2:4.07
   depends_on:
