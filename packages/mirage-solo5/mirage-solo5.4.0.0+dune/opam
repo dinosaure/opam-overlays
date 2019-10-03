@@ -51,8 +51,8 @@ Currently this package also includes the C stubs used by the Solo5 `console`,
 The OCaml runtime and C runtime required to support it are provided separately
 by the [ocaml-freestanding](https://github.com/mirage/ocaml-freestanding) package.
 """
-dev-repo: "git+https://github.com/dune-universe/mirage-solo5.git"
+dev-repo: "git+https://github.com/dinosaure/mirage-solo5.git"
 url {
   src:
-    "git+https://github.com/dune-universe/mirage-solo5.git#separate-api+implement-os"
+    "git+https://github.com/dinosaure/mirage-solo5.git#full-dune"
 }
