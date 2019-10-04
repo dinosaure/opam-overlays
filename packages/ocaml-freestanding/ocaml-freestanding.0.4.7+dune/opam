@@ -25,10 +25,6 @@ conflicts: [
   "solo5-kernel-ukvm"
   "solo5-kernel-virtio"
   "solo5-kernel-muen"
-  "solo5-bindings-hvt" {>="0.6.0"}
-  "solo5-bindings-virtio" {>="0.6.0"}
-  "solo5-bindings-muen" {>="0.6.0"}
-  "solo5-bindings-genode" {>="0.6.0"}
 ]
 available: [
   ((os = "linux" & (arch = "x86_64" | arch = "arm64"))
