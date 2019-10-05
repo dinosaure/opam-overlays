@@ -33,5 +33,5 @@ description:
   "This library implements the MirageOS network interface for Solo5 targets."
 url {
   src:
-    "https://github.com/dinosaure/mirage-net-solo5#master"
+    "https://github.com/dinosaure/mirage-net-solo5#full-dune"
 }
