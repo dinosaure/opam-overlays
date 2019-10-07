@@ -42,5 +42,5 @@ securely and with finer control than with a full software stack.
 """
 url {
   src:
-    "git+https://github.com/dune-universe/mirage.git#duniverse-master"
+    "git+https://github.com/dinosaure/mirage.git#full-dune"
 }
