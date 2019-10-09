@@ -8,13 +8,13 @@ tags: [ "log" "system" "org:erratique" ]
 license: "ISC"
 depends: [
   "ocaml" {>= "4.03.0"}
-  "lwt"
   "fmt"
   "cmdliner"
   "dune"
   "mtime" {with-test} ]
 depopts: [
   "js_of_ocaml"
+  "lwt"
 ]
 conflicts: [
   "js_of_ocaml" { < "3.3.0" } ]
